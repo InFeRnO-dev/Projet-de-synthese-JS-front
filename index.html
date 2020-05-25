@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>TP2 Frontend</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="res/css/index.css"/>
+</head>
+<body>
+    <div id="content"></div>
+
+    <div id="modalEditList" class="modal">
+        <div class="modal-content">
+            <h4>Modifier</h4>
+            <div class="row">
+                <form class="col s12">
+                    <div class="row">
+                        <div class="input-field col s6">
+                            <input id="inputshop" type="text" class="validate">
+                            <label for="inputshop">Shop</label>
+                        </div>
+                        <div class="input-field col s6">
+                            <input id="inputdate" type="date" class="validate">
+                            <label for="inputdate">Date</label>
+                        </div>
+                    </div>
+                </form>
+                <div class="modal-footer">
+                    <button onclick="indexController.editList()" class="waves-effect waves-green btn-flat" id="btnValidEdit">Valider</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="modalAddList" class="modal">
+        <div class="modal-content">
+            <h4>Ajouter</h4>
+            <div class="row">
+                <form class="col s12">
+                    <div class="row">
+                        <div class="input-field col s6">
+                            <input id="inputaddshop" type="text" class="validate">
+                            <label for="inputaddshop">Shop</label>
+                        </div>
+                        <div class="input-field col s6">
+                            <input id="inputadddate" type="date" class="validate">
+                            <label for="inputadddate">Date</label>
+                        </div>
+                    </div>
+                </form>
+                <div class="modal-footer">
+                    <button onclick="indexController.addList()" class="waves-effect waves-green btn-flat" id="btnValidAdd">Valider</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="modalDeleteList" class="modal">
+        <div class="modal-content">
+            <h4>Supprimer</h4>
+            <div class="row">
+                <h5>Etes vous sur de vouloir supprimer cette liste ?</h5>
+                <div class="modal-footer">
+                    <button onclick="indexController.deleteList()" class="modal-close waves-effect waves-green btn-flat" id="btnValidDelete">Oui</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="modalAddItem" class="modal">
+        <div class="modal-content">
+            <h4>Ajouter</h4>
+            <div class="row">
+                <form class="col s12">
+                    <div class="row">
+                        <div class="input-field col s6">
+                            <input id="inputaddlabel" type="text" class="validate">
+                            <label for="inputaddlabel">Label</label>
+                        </div>
+                        <div class="input-field col s6">
+                            <input id="inputaddquantity" type="number" class="validate">
+                            <label for="inputaddquantity">Quantity</label>
+                        </div>
+                    </div>
+                </form>
+                <div class="modal-footer">
+                    <button onclick="itemsController.addItem()" class="waves-effect waves-green btn-flat" id="btnValidAddItem">Valider</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="modalEditItem" class="modal">
+        <div class="modal-content">
+            <h4>Modifier</h4>
+            <div class="row">
+                <form class="col s12">
+                    <div class="row">
+                        <div class="input-field col s6">
+                            <input id="inputeditlabel" type="text" class="validate">
+                            <label for="inputeditlabel">Label</label>
+                        </div>
+                        <div class="input-field col s6">
+                            <input id="inputeditquantity" type="number" class="validate">
+                            <label for="inputeditquantity">Quantity</label>
+                        </div>
+                    </div>
+                </form>
+                <div class="modal-footer">
+                    <button onclick="itemsController.editItem()" class="waves-effect waves-green btn-flat" id="btnValidEditItem">Valider</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="modalDeleteItem" class="modal">
+        <div class="modal-content">
+            <h4>Supprimer</h4>
+            <div class="row">
+                <h5>Etes vous sur de vouloir supprimer cet article ?</h5>
+                <div class="modal-footer">
+                    <button onclick="itemsController.deleteItem()" class="modal-close waves-effect waves-green btn-flat" id="btnValidDeleteItem">Oui</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="modalViewListHistorique" class="modal">
+        <div class="modal-content">
+            <div class="row">
+                <div class="col s8">
+                    <table id="tableViewAllItem">
+                        <thead>
+                        <tr>
+                            <th scope="col">Label</th>
+                            <th scope="col">Quantity</th>
+                            <th scope="col">Checked</th>
+                            <th></th>
+                        </tr>
+                        </thead>
+                        <tbody id="tableBodyViewAllItem">
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="modalArchivedList" class="modal">
+        <div class="modal-content">
+            <h4>Archiver</h4>
+            <div class="row">
+                <h5>Etes vous sur de vouloir archiver cette liste ?</h5>
+                <h6>Vous ne serez plus en mesure de la modifier.</h6>
+                <div class="modal-footer">
+                    <button onclick="indexController.archivedList()" class="modal-close waves-effect waves-green btn-flat" id="btnValidArchived">Oui</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="modalDeleteArchivedList" class="modal">
+        <div class="modal-content">
+            <h4>Supprimer</h4>
+            <div class="row">
+                <h5>Etes vous sur de vouloir supprimer cette liste ?</h5>
+                <div class="modal-footer">
+                    <button onclick="historiqueController.deleteArchivedList()" class="modal-close waves-effect waves-green btn-flat" id="btnValidDeleteArchived">Oui</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script type="application/ecmascript" src="app/tools.js"></script>
+    <script type="application/ecmascript" src="app/model/classes.js"></script>
+    <script type="application/ecmascript" src="app/model/model.js"></script>
+    <script type="application/ecmascript" src="app/model/modelItem.js"></script>
+    <script type="application/ecmascript" src="app/model/modelHistorique.js"></script>
+    <script type="application/ecmascript" src="app/services/serviceuseraccount.js"></script>
+    <script type="application/ecmascript" src="app/services/itemapi.js"></script>
+    <script type="application/ecmascript" src="app/services/listapi.js"></script>
+    <script type="application/ecmascript" src="app/services/useraccountapi.js"></script>
+    <script type="application/ecmascript" src="app/controllers/basecontroller.js"></script>
+    <script type="application/ecmascript" src="app/controllers/login.js"></script>
+    <script>navigate("index")</script>
+</body>
+</html>

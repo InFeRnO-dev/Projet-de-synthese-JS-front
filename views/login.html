@@ -1,0 +1,30 @@
+<div id="login-page" style="padding: 10%" class="row">
+    <div class="col s12 z-depth-4 card-panel">
+        <form class="login-form">
+            <div class="row">
+                <div class="input-field col s12 center">
+                    <p style="font-family: 'Arial Black'; font-size: 200%" class="center login-form-text">Login</p>
+                </div>
+            </div>
+            <div class="row margin">
+                <div class="input-field col s12">
+                    <i class="material-icons prefix">account_circle</i></i>
+                    <input id="inputlogin" type="text">
+                    <label for="inputlogin" class="center-align">Username</label>
+                </div>
+            </div>
+            <div class="row margin">
+                <div class="input-field col s12">
+                    <i class="material-icons prefix">lock</i></i>
+                    <input id="inputpassword" type="password">
+                    <label for="inputpassword">Password</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col s12">
+                    <a onclick="loginController.authenticate()" class="btn waves-effect waves-light col s12">Login</a>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

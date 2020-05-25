@@ -1,0 +1,27 @@
+<nav>
+    <div id="navbar" class="nav-wrapper">
+        <a href="#" class="brand-logo">Listes de courses</a>
+        <ul class="right hide-on-med-and-down">
+            <li><a onclick="indexController.openModal('#modalAddItem')"><i class="material-icons right">add</i>Ajouter un article</a></li>
+            <li><a onclick="navigate('index')"><i class="material-icons right">view_module</i>Listes</a></li>
+        </ul>
+    </div>
+</nav>
+
+<div class="row">
+    <div class="col s2"></div>
+    <div class="col s8">
+        <table id="tableAllItem" style="display: none;">
+            <thead>
+            <tr>
+                <th scope="col">Label</th>
+                <th scope="col">Quantité</th>
+                <th scope="col">Check</th>
+                <th></th>
+            </tr>
+            </thead>
+            <tbody id="tableBodyAllItem">
+            </tbody>
+        </table>
+    </div>
+</div>

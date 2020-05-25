@@ -1,0 +1,28 @@
+<nav>
+    <div id="navbar" class="nav-wrapper">
+        <a href="#" class="brand-logo">Listes de courses</a>
+        <ul class="right hide-on-med-and-down">
+            <li><a onclick="indexController.openModal('#modalAddList')"><i class="material-icons right">add</i>Ajouter une liste</a></li>
+            <li><a onclick="navigate('historique')"><i class="material-icons right">view_module</i>Historique</a></li>
+        </ul>
+    </div>
+</nav>
+
+<div class="row">
+    <div class="col s2"></div>
+    <div class="col s8">
+        <table id="tableAllList" style="display: none;">
+        <thead>
+            <tr>
+                <th scope="col">Magasin</th>
+                <th scope="col">Date</th>
+                <th scope="col">Archivée</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody id="tableBodyAllList">
+        </tbody>
+        </table>
+    </div>
+</div>
+
