@@ -6,31 +6,34 @@ class ItemAPI extends ServiceUserAccount{
     }
 
     getAllItem(idlist) {
-        return fetchJSON(`${serviceBaseUrlItem}/${idlist}`)
+        return fetchJSON(`${serviceBaseUrlItem}/${idlist}`, this.token)
     }
 
     getItemById(idlist, iditem) {
-        return fetchJSON(`${serviceBaseUrlItem}/${idlist}/${iditem}`)
+        return fetchJSON(`${serviceBaseUrlItem}/${idlist}/${iditem}`, this.token)
     }
 
     delete(idlist, iditem) {
         console.log(idlist, iditem)
-        return fetch(`${serviceBaseUrlItem}/${idlist}/${iditem}`, { method: 'DELETE' })
+        this.headers.delete('Content-Type')
+        return fetch(`${serviceBaseUrlItem}/${idlist}/${iditem}`, { method: 'DELETE', headers: this.headers })
     }
 
     insert(item) {
+        this.headers.set('Content-Type','application/json')
         return fetch(serviceBaseUrlItem, {
             method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
+            headers: this.headers,
             body: JSON.stringify(item)
         })
     }
 
     update(item) {
         console.log(item)
+        this.headers.set('Content-Type','application/json')
         return fetch(serviceBaseUrlItem, {
             method: 'PUT',
-            headers: { 'Content-Type': 'application/json' },
+            headers: this.headers,
             body: JSON.stringify(item)
         })
     }
