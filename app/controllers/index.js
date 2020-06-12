@@ -21,15 +21,22 @@ class IndexController extends BaseController {
     async displayAllList() {        //afficher toutes les listes
         let content = ''
         this.tableAllList.style.display = "none"
+        let MyId
         try {
+            for (const list of await this.model.getAllList()) {
+                MyId = list.fk_id_user
+                break
+            }
             const lists = await this.model.getAllListCurrent()
             for (const list of lists) {
                 const date = list.date.toLocaleDateString()
                 content += `<tr><td><p style="color: blueviolet; font-family: 'Arial Black'" onclick="indexController.goToItem(${list.id_list})"> ${list.shop}</p></td>
                     <td><p style="font-family: 'Arial Black'">${date}</p></td>
                     <td><p><label><input id="cbItem" type="checkbox" onchange="indexController.displayArchivedList(${list.id_list})"/><span></span></label></p></td>
-                    <td><button class="btn" onclick="indexController.displayEditList(${list.id_list})"><i class="material-icons">edit</i></button>
-                    <button class="btn" onclick="indexController.displayDeleteList(${list.id_list})"><i class="material-icons">delete</i></button></td></tr>`
+                    <td><button class="btn" onclick="indexController.displayEditList(${list.id_list})"><i class="material-icons">edit</i></button></td>
+                    <td><button class="btn" onclick="indexController.displayDeleteList(${list.id_list})"><i class="material-icons">delete</i></button></td>
+                    <td><button class="btn" onclick="partageController.displayPartagerList(${list.id_list}, ${MyId})"><i class="material-icons">share</i></button></td>
+                    <td><button class="btn" onclick="partageController.displayAllPartageByList(${list.id_list})"><i class="material-icons">public</i></button></td></tr>`
             }
             this.tableBodyAllList.innerHTML = content
             this.tableAllList.style.display = "block"
@@ -250,6 +257,10 @@ class IndexController extends BaseController {
                 this.displayServiceError()
             }
         }
+    }
+    async logout() {
+        sessionStorage.removeItem("token")
+        navigate("login")
     }
 }
 

@@ -6,6 +6,7 @@ class BaseController {
         this.model = new Model()
         this.modelItem = new ModelItem()
         this.modelHistorique = new ModelHistorique()
+        this.modelPartage = new ModelPartage()
     }
     verifyAuthentication() {
         if (sessionStorage.getItem("token") === null) {
